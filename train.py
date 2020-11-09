@@ -37,11 +37,21 @@ def clean_data(data):
     x_df["poutcome"] = x_df.poutcome.apply(lambda s: 1 if s == "success" else 0)
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
+
+    return x_df,y_df
     
 # TODO: Create TabularDataset using TabularDatasetFactory
 # Data is located at:
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
+ds = TabularDatasetFactory.from_delimited_files(path = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv")
+
+x,y = clean_data(ds)
+
+### YOUR CODE HERE ###
+
+# TODO: Split data into train and test sets.
+x_train, y_train, x_test, y_test = train_test_split(x, y, random_state = 0)
 
 
 run = Run.get_context()
@@ -64,12 +74,4 @@ def main():
     run.log("Accuracy", np.float(accuracy))
 
 if __name__ == '__main__':
-    ds = TabularDatasetFactory.from_delimited_files(path = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv")
-
-    x, y = clean_data(ds)
-
-### YOUR CODE HERE ###
-
-# TODO: Split data into train and test sets.
-    x_train, y_train, x_test, y_test = train_test_split(x, y, test_size=0.20, random_state = 2)
     main()
