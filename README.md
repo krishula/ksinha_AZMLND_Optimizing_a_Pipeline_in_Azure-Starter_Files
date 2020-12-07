@@ -60,7 +60,6 @@ primary_metric = 'accuracy' : The metric that Automated Machine Learning will op
 
 enable_early_stopping = True : Whether to enable early termination if the score is not improving in the short term.
 
-The best model was the one with 0.9159 accuracy and the algorithm used was VotingEnsemble. 
 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
@@ -70,8 +69,8 @@ Although there isn't much a difference in Accuracy between the two models, AutoM
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
-In order to improve the Hyperdrive pipeline I would change the early stopping policy to a more conservative policy like the MedianStoppingPolicy, and change the RandomParameterSampling to GridParameterSampling which is more exhaustive computationally. These two changes would make more slow the pipeline because the policy would stop less models and the new sampler would check more parameters.
+Use a different less aggressive stopping policy
+Use Gridsampling
 
-In order to improve the AutoML I would try to increase the n_cross_validations(for example to 5), change the experiment_timeout_minutes to train longer. I would also change the primary_metric to AUC_weighted because the data are not balanced.
 
 
