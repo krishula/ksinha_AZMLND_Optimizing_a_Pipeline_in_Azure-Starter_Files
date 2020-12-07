@@ -10,8 +10,8 @@ This model is then compared to an Azure AutoML run.
 This dataset contains bank marketing campaigns data based on the phone calls to potential clients. The target was to convince the potential clients to make a term deposit at the bank. In this project, we seek to predict whether the potential client would accept to make a term deposit at the bank or not.
 
 The best performing model was Scikit-learn pipeline, which uses logistic regression with hyperdrive to find the best hyperparameters.
-Accuracy for Scikit-learn: 0.91685%
-Accuracy for AutoML pipeline (VotingEnsemble): 0.91591%
+Accuracy for Scikit-learn: 0.9169
+Accuracy for AutoML pipeline (VotingEnsemble): 0.9159
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
@@ -60,7 +60,7 @@ primary_metric = 'accuracy' : The metric that Automated Machine Learning will op
 
 enable_early_stopping = True : Whether to enable early termination if the score is not improving in the short term.
 
-The best model was the one with 0.91591% accuracy and the algorithm used was VotingEnsemble. 
+The best model was the one with 0.9159 accuracy and the algorithm used was VotingEnsemble. 
 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
