@@ -117,8 +117,8 @@ Although there isn't much a difference in Accuracy between the two models, AutoM
 ## Future Work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
-Use a different less aggressive stopping policy
-Use Gridsampling
+  - Use a different less aggressive stopping policy
+  - Use Gridsampling
 
 
 
