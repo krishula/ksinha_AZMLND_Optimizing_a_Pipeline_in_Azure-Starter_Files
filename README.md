@@ -24,6 +24,37 @@ Hyperparameters with their Search Spaces:
 1. C: The inverse of the reqularization strength. '--C' : choice(0.001,0.01,0.1,1,10,20,50,100,200,500,1000),
 2. max_iter: Maximum number of iterations to converge.  '--max_iter': choice(50,100,300)
 
+### Types of hyperparameters: (According to Microsoft docs)
+
+A. Discrete hyperparameters:
+The following advanced discrete hyperparameters can be specified using a distribution:
+  - quniform(low, high, q) - Returns a value like round(uniform(low, high) / q) * q
+  - qloguniform(low, high, q) - Returns a value like round(exp(uniform(low, high)) / q) * q
+  - qnormal(mu, sigma, q) - Returns a value like round(normal(mu, sigma) / q) * q
+  - qlognormal(mu, sigma, q) - Returns a value like round(exp(normal(mu, sigma)) / q) * q
+  
+B. Continuous hyperparameters:
+The following continuous hyperparameters are specified as a distribution over a continuous range of values:
+  - uniform(low, high) - Returns a value uniformly distributed between low and high
+  - loguniform(low, high) - Returns a value drawn according to exp(uniform(low, high)) so that the logarithm of the return value is uniformly distributed
+  - normal(mu, sigma) - Returns a real value that's normally distributed with mean mu and standard deviation sigma
+  - lognormal(mu, sigma) - Returns a value drawn according to exp(normal(mu, sigma)) so that the logarithm of the return value is normally distributed
+
+Configuration that can defines a HyperDrive run:
+
+  - hyperparameter_sampling: It referes to the hyperparameter sampling space.
+  - primary_metric_name: It's the name of the primary metric reported by the experiment runs.
+  - primary_metric_goal: Either takes maximize or minimize. It helps determine if the primary metric has to be minimized/maximized in the experiment runs' evaluation.
+  - max_total_runs: It's the maximum number of runs you want it to run. There may be fewer runs when the sample space is smaller than this value.
+  - max_concurrent_runs: It's maximum number of runs that can run concurrently.
+  - max_duration_minutes: It's the maximum duration of the run. The run is cancelled once this time exceeds.
+  - policy: It's the early termination policy to use. Default, no early termination policy will be used.
+  - estimator: It's the estimator that will be called with sampled hyper parameters from the chosen dataset.
+  - run_config: It's the object for setting up configuration for script/notebook runs.
+  - pipeline: It's the pipeline object for setting up configuration for pipeline runs. The pipeline object will be called with the sample hyperparameters to submit pipeline runs. 
+
+Note: We need to specify only one of the following parameters: estimator, run_config, or pipeline.
+  
 **What are the benefits of the parameter sampler you chose?**
 
 RandomParameterSampling is used here instead of GridParameterSampling since, the hyperparameters are randomly selected from the search space vs GridParameterSampling where all the possible values from the search space are used, and it supports early termination of low-performance runs.
@@ -64,7 +95,14 @@ enable_early_stopping = True : Whether to enable early termination if the score 
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
 
-Although there isn't much a difference in Accuracy between the two models, AutoML helps us more by showing the importance of each feature for prediction and also shows some useful metric outputs.  
+Although there isn't much a difference in Accuracy between the two models, AutoML helps us more by showing the importance of each feature for prediction and also shows some useful metric outputs like:
+  - weighted_accuracy
+  - f1_score_weighted
+  - precision_score_macro
+ as show below:
+ 
+ ![alt text] 
+
 
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
