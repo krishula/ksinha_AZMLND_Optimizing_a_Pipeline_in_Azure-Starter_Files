@@ -91,8 +91,17 @@ primary_metric = 'accuracy' : The metric that Automated Machine Learning will op
 
 enable_early_stopping = True : Whether to enable early termination if the score is not improving in the short term.
 
+Let's talk about the learned parameters of Auto ML in brief:
 
-## Pipeline comparison
+  - enable_dnn: It is a flag to enable neural networks for forecasting and natural language processing. 
+  - enable_feature_sweeping: It enables or disables feature sweeping. 
+  - feature_sweeping_config: It is the config used for feature sweeping.
+  - is_onnx_compatible: It works in onnx compatible mode.
+  - force_text_dnn: It is a flag to force add neural networks for natural language processing in feature sweeping.
+  
+Although these parameters turned out to be set at "None" for our project, they are still very important in Auto ML and are worth knowing about.
+
+## Pipeline Comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
 
 Although there isn't much a difference in Accuracy between the two models, AutoML helps us more by showing the importance of each feature for prediction and also shows some useful metric outputs like:
@@ -101,10 +110,11 @@ Although there isn't much a difference in Accuracy between the two models, AutoM
   - precision_score_macro
  as show below:
  
- ![alt text] 
+ ![alt text](https://github.com/krishula/ksinha_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files/blob/master/Picture2-Project1.png)
+ 
 
 
-## Future work
+## Future Work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
 Use a different less aggressive stopping policy
