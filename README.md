@@ -40,7 +40,7 @@ The following continuous hyperparameters are specified as a distribution over a 
   - normal(mu, sigma) - Returns a real value that's normally distributed with mean mu and standard deviation sigma
   - lognormal(mu, sigma) - Returns a value drawn according to exp(normal(mu, sigma)) so that the logarithm of the return value is normally distributed
 
-Configuration that can defines a HyperDrive run:
+Configuration that defines a HyperDrive run:
 
   - hyperparameter_sampling: It referes to the hyperparameter sampling space.
   - primary_metric_name: It's the name of the primary metric reported by the experiment runs.
